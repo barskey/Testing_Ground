@@ -2,7 +2,7 @@
 
 #include "Testing_Ground.h"
 #include "FirstPersonCharacter.h"
-#include "Testing_GroundProjectile.h"
+#include "../Weapons/BallProjectile.h"
 #include "Animation/AnimInstance.h"
 #include "GameFramework/InputSettings.h"
 
@@ -103,7 +103,7 @@ void AFirstPersonCharacter::OnFire()
 		if (World != NULL)
 		{
 			// spawn the projectile at the muzzle
-			World->SpawnActor<ATesting_GroundProjectile>(ProjectileClass, SpawnLocation, SpawnRotation);
+			World->SpawnActor<ABallProjectile>(ProjectileClass, SpawnLocation, SpawnRotation);
 		}
 	}
 
