@@ -2,6 +2,7 @@
 
 #include "Testing_Ground.h"
 #include "FirstPersonCharacter.h"
+#include "../Weapons/Gun.h"
 #include "GameFramework/InputSettings.h"
 
 DEFINE_LOG_CATEGORY_STATIC(LogFPChar, Warning, All);
@@ -41,6 +42,11 @@ void AFirstPersonCharacter::BeginPlay()
 {
 	// Call the base class  
 	Super::BeginPlay();
+
+    if (GunBlueprint == NULL) { return; }
+    
+    Gun = GetWorld()->SpawnActor<AGun>(GunBlueprint);
+    Gun->AttachToComponent(Mesh1P, FAttachmentTransformRules(EAttachmentRule::SnapToTarget, true), TEXT("GripPoint")); //Attach gun mesh component to Skeleton, doing it here because the skelton is not yet created in the constructor
 }
 
 //////////////////////////////////////////////////////////////////////////
